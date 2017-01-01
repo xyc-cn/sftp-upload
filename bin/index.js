@@ -8,8 +8,10 @@ function start(config,sftp){
 			}
 		}
 
-	sftp.connect(connect).then(() => {
+	return sftp.connect(connect).then(() => {
+
 		return sftp.mkdir(config.remoteDir, true);
+
 	}).then(() => {
 		return new Promise(function(resolve, reject) {
 			var dir = glob.sync('./'+config.dir+'/**/', {
@@ -80,7 +82,7 @@ module.exports = {
 	getInstance : function(config){
 		var instance = new Client();
 		instance.start = function(){
-			start(config,instance)
+			return start(config,instance)
 		};
 		return instance;
 	}
