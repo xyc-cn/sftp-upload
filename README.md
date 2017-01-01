@@ -1,6 +1,7 @@
 # sftp-upload
 nodejs sftp upload module
 
+``` javascript
 var config = {
 	connent:{
 		host: '1010.10.10',
@@ -19,3 +20,4 @@ var upload = require('sftp_client')
 var instance = upload.getInstance(config);
 
 instance.start();
+``` 
